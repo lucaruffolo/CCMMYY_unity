@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CheckPlayerClose : MonoBehaviour
 {
@@ -10,17 +11,20 @@ public class CheckPlayerClose : MonoBehaviour
     public Transform movePointU;
     public Transform movePointD;
     public Transform goal;
-    private bool stopPush = false;
-    private int i = 0;
+    //private bool stopPush = false;
+    //private int i = 0;
 
     private bool affiancatoLeft = false;
     private bool affiancatoRight = false;
     private bool affiancatoUp = false;
     private bool affiancatoDown = false;
+    
+    public bool stopPlayerBlockOnWall = false;
+    public Tilemap wall;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,11 +33,9 @@ public class CheckPlayerClose : MonoBehaviour
         Vector3 posAttuale = transform.position;
         if (goal.transform.position == posAttuale) {
             Debug.Log("Stop Hai vinto Winner");
-            stopPush = true;
+            //stopPush = true;
         }
-        //Debug.Log(movePointL.position);
-        //Debug.Log(posizioneAttuale);
-        //Debug.Log(posAttuale);
+        
         Vector3 posizioneAttualePlayer = player.GetComponent<Transform>().position;
         Vector3 posAttualeCubo = transform.position;
         if (movePointL.position == posizioneAttualePlayer)
@@ -57,8 +59,45 @@ public class CheckPlayerClose : MonoBehaviour
         else if(movePointU.position != posizioneAttualePlayer && posizioneAttualePlayer != posAttualeCubo)
             affiancatoUp = false;
 
+        Vector3Int obstacleMapRight = wall.WorldToCell(movePointR.position);
+        if(wall.GetTile(obstacleMapRight) == null){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoLeft){
+                Vector3 vec = new Vector3(transform.position.x + 1.0f, transform.position.y, transform.position.z);
+                transform.position = vec;
+                //print("collisione da sx -> dx ");
+            }
+        }
 
-        if(posizioneAttualePlayer == posAttualeCubo && affiancatoLeft){
+        Vector3Int obstacleMapLeft = wall.WorldToCell(movePointL.position);
+        if(wall.GetTile(obstacleMapLeft) == null){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoRight){
+                Vector3 vec = new Vector3(transform.position.x - 1.0f, transform.position.y, transform.position.z);
+                transform.position = vec;
+                //print("collisione da dx <- sx ");
+            }
+        }
+
+        Vector3Int obstacleMapUp = wall.WorldToCell(movePointU.position);
+        if(wall.GetTile(obstacleMapUp) == null){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoDown){
+                Vector3 vec = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+                transform.position = vec;
+                //print("collisione da giu /\\ up ");
+            }
+        }
+
+        Vector3Int obstacleMapDown = wall.WorldToCell(movePointD.position);
+        if(wall.GetTile(obstacleMapDown) == null){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoUp){
+                Vector3 vec = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
+                transform.position = vec;
+                //print("collisione da Up \\/ giu ");
+            }
+        }
+    }
+
+
+    /*if(posizioneAttualePlayer == posAttualeCubo && affiancatoLeft){
             Vector3 vec = new Vector3(transform.position.x + 1.0f, transform.position.y, transform.position.z);
             transform.position = vec;
             //print("collisione da sx -> dx ");
@@ -77,9 +116,7 @@ public class CheckPlayerClose : MonoBehaviour
             Vector3 vec = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                 transform.position = vec;
                 //print("collisione da giu /\\ up ");
-        }
-        
-    }
+        }*/
 
     /*private void OnCollisionEnter2D(Collision2D collision) {
         //if (!stopPush) {
