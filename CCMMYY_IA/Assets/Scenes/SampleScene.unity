@@ -412,7 +412,10 @@ MonoBehaviour:
   movePointU: {fileID: 619111101}
   movePointD: {fileID: 1482166137}
   goal: {fileID: 1187833518}
-  stopPlayerBlockOnWall: 0
+  BlockOnWallRight: 0
+  BlockOnWallLeft: 0
+  BlockOnWallUp: 0
+  BlockOnWallDown: 0
   wall: {fileID: 623766798}
 --- !u!50 &594144625
 Rigidbody2D:
@@ -1733,6 +1736,7 @@ MonoBehaviour:
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  block: {fileID: 594144621}
 --- !u!1 &1187833517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2001,7 @@ MonoBehaviour:
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  block: {fileID: 594144621}
 --- !u!212 &1465518793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2131,6 +2136,7 @@ MonoBehaviour:
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  block: {fileID: 594144621}
 --- !u!212 &1553236630
 SpriteRenderer:
   m_ObjectHideFlags: 0

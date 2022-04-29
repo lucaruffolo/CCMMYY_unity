@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool onTop = false;
     public Transform movePoint;
     public LayerMask whatStopsMovement;
+    public GameObject block;
 
 
     void Start()
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //block.GetComponent<CheckPlayerClose>().BlockOnWallRight;
+        //Debug.Log(block.GetComponent<CheckPlayerClose>().BlockOnWallDown);
+
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if (onTop) {
             Vector3 up = new Vector3(movePoint.position.x, movePoint.position.y, -2.0f);
