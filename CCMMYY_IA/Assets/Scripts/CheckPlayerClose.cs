@@ -13,6 +13,11 @@ public class CheckPlayerClose : MonoBehaviour
     public Transform movePointD;
     public Transform goal;
 
+    public bool haveBlockNearR = false;
+    public bool haveBlockNearL = false;
+    public bool haveBlockNearU = false;
+    public bool haveBlockNearD = false;
+
     private bool affiancatoLeft = false;
     private bool affiancatoRight = false;
     private bool affiancatoUp = false;
@@ -73,7 +78,7 @@ public class CheckPlayerClose : MonoBehaviour
         Vector3Int obstacleMapRight = wall.WorldToCell(movePointR.position);
         if(wall.GetTile(obstacleMapRight) == null){
             BlockOnWallRight = false;
-            if(posizioneAttualePlayer == posAttualeCubo && affiancatoLeft){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoLeft && haveBlockNearR == false){
                 Vector3 vec = new Vector3(transform.position.x + 1.0f, transform.position.y, transform.position.z);
                 transform.position = vec;
                 //print("collisione da sx -> dx ");
@@ -84,7 +89,8 @@ public class CheckPlayerClose : MonoBehaviour
         Vector3Int obstacleMapLeft = wall.WorldToCell(movePointL.position);
         if(wall.GetTile(obstacleMapLeft) == null){
             BlockOnWallLeft = false;
-            if(posizioneAttualePlayer == posAttualeCubo && affiancatoRight){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoRight && haveBlockNearL == false)
+            {
                 Vector3 vec = new Vector3(transform.position.x - 1.0f, transform.position.y, transform.position.z);
                 transform.position = vec;
                 //print("collisione da dx <- sx ");
@@ -95,7 +101,8 @@ public class CheckPlayerClose : MonoBehaviour
         Vector3Int obstacleMapUp = wall.WorldToCell(movePointU.position);
         if(wall.GetTile(obstacleMapUp) == null){
             BlockOnWallUp = false;
-            if(posizioneAttualePlayer == posAttualeCubo && affiancatoDown){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoDown && haveBlockNearU == false)
+            {
                 Vector3 vec = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                 transform.position = vec;
                 //print("collisione da giu /\\ up ");
@@ -106,7 +113,8 @@ public class CheckPlayerClose : MonoBehaviour
         Vector3Int obstacleMapDown = wall.WorldToCell(movePointD.position);
         if(wall.GetTile(obstacleMapDown) == null){
             BlockOnWallDown = false;
-            if(posizioneAttualePlayer == posAttualeCubo && affiancatoUp){
+            if(posizioneAttualePlayer == posAttualeCubo && affiancatoUp && haveBlockNearD == false)
+            {
                 Vector3 vec = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
                 transform.position = vec;
                 //print("collisione da Up \\/ giu ");

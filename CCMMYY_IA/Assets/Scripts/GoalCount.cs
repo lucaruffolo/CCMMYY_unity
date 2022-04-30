@@ -9,7 +9,7 @@ public class GoalCount : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.childCount);
+        //Debug.Log(transform.childCount);
         arrivedOnGoal = new bool[transform.childCount];
         for(int j = 0; j< arrivedOnGoal.Length; j++)
         {
@@ -20,7 +20,7 @@ public class GoalCount : MonoBehaviour
         foreach (Transform child in transform)
         {
             childsG[i] = child.gameObject;
-            Debug.Log(childsG[i]);
+            //Debug.Log(childsG[i]);
             i++;
         }
 
