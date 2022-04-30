@@ -56,12 +56,13 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GoalCount.cs" />
     <Compile Include="Assets\Scripts\SwitchPlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CheckPlayerClose.cs" />
-    <Compile Include="Assets\testaaa.cs" />
-    <Compile Include="Assets\Scripts\GoalCount.cs" />
     <Compile Include="Assets\Scripts\GoalChekArrived.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\BoxOnTop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
