@@ -21,9 +21,9 @@ public class CheckOtherBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i<childblock.Length; i++)
+        for (int i = 0; i < childblock.Length; i++)
         {
-            for(int j = 0; j<childblock.Length; j++)
+            for (int j = 0; j < childblock.Length; j++)
             {
                 if (j != i)
                 {
@@ -34,17 +34,47 @@ public class CheckOtherBlock : MonoBehaviour
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearL = true;
                         break;
                     }
-                    else
+
+                    //check sul blocco a sinistra
+                    if (childblock[i].GetComponent<CheckPlayerClose>().movePointL.position == childblock[j].GetComponent<Transform>().position)
+                    {
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearL = true;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearR = true;
+                        break;
+                    }
+
+                    //check sul blocco sopra
+                    if (childblock[i].GetComponent<CheckPlayerClose>().movePointU.position == childblock[j].GetComponent<Transform>().position)
+                    {
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearU = true;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearD = true;
+                        break;
+                    }
+
+                    //check sul blocco sotto
+                    if (childblock[i].GetComponent<CheckPlayerClose>().movePointD.position == childblock[j].GetComponent<Transform>().position)
+                    {
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearD = true;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearU = true;
+                        break;
+                    }
+                    /*else
                     {
                         childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearR = false;
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearL = false;
-                    }
-
-                    
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearL = false;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearR = false;
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearU = false;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearD = false;
+                        childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearD = false;
+                        childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearU = false;
+                    }*/
                 }
-            } 
+            }
         }
+        
 
+        /*
         for (int i = 0; i < childblock.Length; i++)
         {
             for (int j = 0; j < childblock.Length; j++)
@@ -58,7 +88,7 @@ public class CheckOtherBlock : MonoBehaviour
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearR = true;
                         break;
                     }
-                    else
+                    /*else
                     {
                         childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearL = false;
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearR = false;
@@ -69,6 +99,7 @@ public class CheckOtherBlock : MonoBehaviour
             }
         }
 
+        
         for (int i = 0; i < childblock.Length; i++)
         {
             for (int j = 0; j < childblock.Length; j++)
@@ -82,7 +113,7 @@ public class CheckOtherBlock : MonoBehaviour
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearD = true;
                         break;
                     }
-                    else
+                    /*else
                     {
                         childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearU = false;
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearD = false;
@@ -106,7 +137,7 @@ public class CheckOtherBlock : MonoBehaviour
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearU = true;
                         break;
                     }
-                    else
+                    /*else
                     {
                         childblock[i].GetComponent<CheckPlayerClose>().haveBlockNearD = false;
                         childblock[j].GetComponent<CheckPlayerClose>().haveBlockNearU = false;
