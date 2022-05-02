@@ -13,7 +13,7 @@ public class CheckOtherBlock : MonoBehaviour
         foreach (Transform child in transform)
         {
             childblock[i] = child.gameObject;
-            Debug.Log(childblock[i]);
+            //Debug.Log(childblock[i]);
             i++;
         }
     }

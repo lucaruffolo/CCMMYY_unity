@@ -21,7 +21,7 @@ public class SwitchPlayer : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("space")) {
-            Debug.Log("Switch Player");
+            //Debug.Log("Switch Player");
             DisableMove(players[index]);
             index++;
             if (index > 2)

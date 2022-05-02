@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement)) {
                     Vector3 prossimoMove = movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                    Debug.Log(Input.GetAxisRaw("Vertical"));
+                    //Debug.Log(Input.GetAxisRaw("Vertical"));
                     if(Input.GetAxisRaw("Vertical") == 1)
                     {
                         if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true ||  block.GetComponent<CheckPlayerClose>().haveBlockNearU == true))
