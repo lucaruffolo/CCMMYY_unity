@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\GoalChekArrived.cs" />
     <Compile Include="Assets\testaaa.cs" />
     <Compile Include="Assets\Scripts\CheckOtherBlock.cs" />
+    <Compile Include="Assets\Scripts\BoxOnTop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
