@@ -28,7 +28,6 @@ public class CheckOtherBlock : MonoBehaviour
                 if (j != i)
                 {
                     Vector3 posBlocco = new Vector3(childblock[j].GetComponent<Transform>().position.x, childblock[j].GetComponent<Transform>().position.y, childblock[j].GetComponent<Transform>().position.z+2);
-                    Debug.Log(posBlocco);
                     //check sul blocco a destra
                     if (childblock[i].GetComponent<CheckPlayerClose>().movePointR.position == childblock[j].GetComponent<Transform>().position)
                     {
