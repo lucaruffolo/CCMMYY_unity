@@ -59,10 +59,10 @@
     <Compile Include="Assets\Scripts\GoalCount.cs" />
     <Compile Include="Assets\Scripts\SwitchPlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\CheckPlayerClose.cs" />
     <Compile Include="Assets\Scripts\GoalChekArrived.cs" />
     <Compile Include="Assets\Scripts\CheckOtherBlock.cs" />
-    <Compile Include="Assets\Scripts\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
