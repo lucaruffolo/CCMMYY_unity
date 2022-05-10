@@ -6,12 +6,12 @@ using UnityEngine.Tilemaps;
 public class CheckPlayerClose : MonoBehaviour
 {
     public GameObject player;
-    public GameObject goalBlock;
+    public GameObject[] goalBlock;
     public Transform movePointL;
     public Transform movePointR;
     public Transform movePointU;
     public Transform movePointD;
-    public Transform goal;
+    public Transform[] goal;
 
     public bool haveBlockNearR = false;
     public bool haveBlockNearL = false;
@@ -42,14 +42,20 @@ public class CheckPlayerClose : MonoBehaviour
     void Update()
     {
         Vector3 posAttuale = transform.position;
-        if (goal.transform.position == posAttuale) {
-            //Debug.Log("Stop Hai vinto Winner");
-            goalBlock.GetComponent<GoalChekArrived>().arrived = true;
-            //stopPush = true;
-        }
-        else
+        //Debug.Log(goalBlock.Length);
+        for(int i = 0; i < goalBlock.Length; i++)
         {
-            goalBlock.GetComponent<GoalChekArrived>().arrived = false;
+            //Debug.Log(goalBlock[i]);
+            if (goal[i].transform.position == posAttuale)
+            {
+                //Debug.Log("Stop Hai vinto Winner");
+                goalBlock[i].GetComponent<GoalChekArrived>().arrived = true;
+                //stopPush = true;
+            }
+            else
+            {
+                goalBlock[i].GetComponent<GoalChekArrived>().arrived = false;
+            }
         }
         
         Vector3 posizioneAttualePlayer = player.GetComponent<Transform>().position;

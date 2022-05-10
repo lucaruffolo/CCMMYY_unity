@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool onTop = false;
     public Transform movePoint;
     public LayerMask whatStopsMovement;
-    public GameObject block;
+    public GameObject[] block;
 
 
     void Start()
@@ -39,21 +39,27 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log(block.GetComponent<Transform>().position);
                     if(Input.GetAxisRaw("Horizontal") == 1)
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearR == true))
+                        for (int i = 0; i < block.Length; i++)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block[i].GetComponent<Transform>().position && (block[i].GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block[i].GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block[i].GetComponent<CheckPlayerClose>().haveBlockNearR == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                     }
                     if(Input.GetAxisRaw("Horizontal") == -1)
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearL == true))
+                        for (int i = 0; i < block.Length; i++)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block[i].GetComponent<Transform>().position && (block[i].GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block[i].GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block[i].GetComponent<CheckPlayerClose>().haveBlockNearL == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                     }
                 }
             }
@@ -63,21 +69,27 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log(Input.GetAxisRaw("Vertical"));
                     if(Input.GetAxisRaw("Vertical") == 1)
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true ||  block.GetComponent<CheckPlayerClose>().haveBlockNearU == true))
+                        for (int i = 0; i < block.Length; i++)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block[i].GetComponent<Transform>().position && (block[i].GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block[i].GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block[i].GetComponent<CheckPlayerClose>().haveBlockNearU == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                     }
                     if(Input.GetAxisRaw("Vertical") == -1)
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block.GetComponent<CheckPlayerClose>().haveBlockNearD == true))
+                        for (int i = 0; i < block.Length; i++)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block[i].GetComponent<Transform>().position && (block[i].GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block[i].GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block[i].GetComponent<CheckPlayerClose>().haveBlockNearD == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                     }
                 }
             }
