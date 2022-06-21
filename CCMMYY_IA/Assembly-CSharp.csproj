@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2020.3.32f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Scripts\GoalCount.cs" />
     <Compile Include="Assets\Scripts\SwitchPlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
@@ -63,6 +60,19 @@
     <Compile Include="Assets\Scripts\CheckPlayerClose.cs" />
     <Compile Include="Assets\Scripts\GoalChekArrived.cs" />
     <Compile Include="Assets\Scripts\CheckOtherBlock.cs" />
+    <Compile Include="Assets\Scripts\EmbASP\inputObjects\Distance.cs" />
+    <Compile Include="Assets\Scripts\EmbASP\inputObjects\Pacman.cs" />
+    <Compile Include="Assets\Scripts\EmbASP\Utility\EmbASPManager.cs" />
+    <Compile Include="Assets\Scripts\EmbASP\inputObjects\Next.cs" />
+    <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TileManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\MusicManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\EmbASP3.5.dll" />
+    <None Include="Assets\Newtonsoft.Json.dll" />
+    <None Include="Assets\Newtonsoft.Json.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -286,6 +296,12 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.32f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="EmbASP3.5">
+      <HintPath>Assets\EmbASP3.5.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.32f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

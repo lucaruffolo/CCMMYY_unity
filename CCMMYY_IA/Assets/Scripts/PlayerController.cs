@@ -1,3 +1,6 @@
+using Assets.Scripts.EmbASP.Utility;
+using EmbASP3._5.it.unical.mat.embasp.languages.asp;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
     public LayerMask whatStopsMovement;
     public GameObject block;
-
+    private EmbASPManager embasp;
+    public bool keyboard = false;
 
     void Start()
     {
         movePoint.parent = null;
+        embasp = EmbASPManager.Instance;
     }
 
     // Update is called once per frame
@@ -22,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         //block.GetComponent<CheckPlayerClose>().BlockOnWallRight;
         //Debug.Log(block.GetComponent<CheckPlayerClose>().BlockOnWallDown);
+       Debug.Log("EmbASP CALL: " + EmbASPManager.Instance.EmbaspCall + "\nTime: ");
 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if (onTop) {
@@ -33,53 +39,76 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f && canMove) {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement)) {
-                    Vector3 prossimoMove = movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-                    //Debug.Log(block.GetComponent<Transform>().position);
-                    if(Input.GetAxisRaw("Horizontal") == 1)
+            if (keyboard)
+            {
+                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+                {
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearR == true))
+                        Vector3 prossimoMove = movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                        //Debug.Log(block.GetComponent<Transform>().position);
+                        if (Input.GetAxisRaw("Horizontal") == 1)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearR == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                        if (Input.GetAxisRaw("Horizontal") == -1)
+                        {
+                            if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearL == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                        }
                     }
-                    if(Input.GetAxisRaw("Horizontal") == -1)
+                }
+                if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+                {
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
                     {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallRight == true || block.GetComponent<CheckPlayerClose>().BlockOnWallLeft == true || block.GetComponent<CheckPlayerClose>().haveBlockNearL == true))
+                        Vector3 prossimoMove = movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                        //Debug.Log(Input.GetAxisRaw("Vertical"));
+                        if (Input.GetAxisRaw("Vertical") == 1)
                         {
-                            //blocco collisione del player con il blocco che sta al muro
+                            if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block.GetComponent<CheckPlayerClose>().haveBlockNearU == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                         }
-                        else
-                            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                        if (Input.GetAxisRaw("Vertical") == -1)
+                        {
+                            if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block.GetComponent<CheckPlayerClose>().haveBlockNearD == true))
+                            {
+                                //blocco collisione del player con il blocco che sta al muro
+                            }
+                            else
+                                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                        }
                     }
                 }
             }
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement)) {
-                    Vector3 prossimoMove = movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                    //Debug.Log(Input.GetAxisRaw("Vertical"));
-                    if(Input.GetAxisRaw("Vertical") == 1)
-                    {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true ||  block.GetComponent<CheckPlayerClose>().haveBlockNearU == true))
-                        {
-                            //blocco collisione del player con il blocco che sta al muro
-                        }
-                        else
-                            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                    }
-                    if(Input.GetAxisRaw("Vertical") == -1)
-                    {
-                        if (prossimoMove == block.GetComponent<Transform>().position && (block.GetComponent<CheckPlayerClose>().BlockOnWallUp == true || block.GetComponent<CheckPlayerClose>().BlockOnWallDown == true || block.GetComponent<CheckPlayerClose>().haveBlockNearD == true))
-                        {
-                            //blocco collisione del player con il blocco che sta al muro
-                        }
-                        else
-                            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                    }
+            else
+            {
+                // MOVIMENTO EMBASP
+
+                SymbolicConstant newMove = embasp.PreviousMove;
+                Vector3 currentPos = new Vector3((int)(embasp.Pacman.transform.position.x + 0.499f), (int)(embasp.Pacman.transform.position.y + 0.499f));
+                //Debug.Log(currentPos + " " + previousPos);
+                if (Math.Abs(currentPos.x - embasp.PreviousPos.x) + Math.Abs(currentPos.y - embasp.PreviousPos.y) >= 1)
+                {
+                    //Debug.Log("Current Pos: " + currentPos);
+                    embasp.PreviousPos = currentPos;
+                    newMove = embasp.ASPMove();
                 }
+                
+                //--------------
             }
         }
     }
