@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 // MOVIMENTO EMBASP
-
+                
+                /*
                 SymbolicConstant newMove = embasp.PreviousMove;
                 Vector3 currentPos = new Vector3((int)(embasp.Pacman.transform.position.x + 0.499f), (int)(embasp.Pacman.transform.position.y + 0.499f));
                 //Debug.Log(currentPos + " " + previousPos);
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
                     embasp.PreviousPos = currentPos;
                     newMove = embasp.ASPMove();
                 }
-                
+                */
                 //--------------
             }
         }

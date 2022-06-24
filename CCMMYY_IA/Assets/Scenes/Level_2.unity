@@ -4731,6 +4731,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   block: {fileID: 594144621}
+  keyboard: 0
 --- !u!1001 &1187641131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5268,6 +5269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410689988}
   - component: {fileID: 1410689989}
+  - component: {fileID: 1410689990}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -5314,6 +5316,18 @@ MonoBehaviour:
   - {fileID: 1042302681}
   CurrentPlayer: {fileID: 0}
   CurrentBox: {fileID: 0}
+--- !u!114 &1410689990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410689987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98cfcbffb81eb24c96b03f793a74029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1443131222
 GameObject:
   m_ObjectHideFlags: 0
@@ -5400,6 +5414,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   block: {fileID: 1677767943}
+  keyboard: 0
 --- !u!212 &1465518793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5536,6 +5551,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   block: {fileID: 133535841}
+  keyboard: 0
 --- !u!212 &1553236630
 SpriteRenderer:
   m_ObjectHideFlags: 0

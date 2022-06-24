@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
 	{
 		gameState = GameState.Init;
 	}
-
+    /*
     void OnLevelWasLoaded()
     {
         if (Level == 0) lives = 3;
@@ -78,8 +78,9 @@ public class GameManager : MonoBehaviour {
         ResetVariables();
 
         
-        EmbASPManager.Instance.GenerateCharacters();
+     //   EmbASPManager.Instance.GenerateCharacters();
     }
+    */
 
     private void ResetVariables()
     {

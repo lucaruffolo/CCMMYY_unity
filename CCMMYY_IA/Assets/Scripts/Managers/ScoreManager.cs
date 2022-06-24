@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+/*
 public class ScoreManager : MonoBehaviour {
 
     private string TopScoresURL = "http://ilbeyli.byethost18.com/pacman/topscores.php";
@@ -79,10 +79,10 @@ public class ScoreManager : MonoBehaviour {
                 break;
             }
         }
-        */
+        //*/
+        /*
         scoreList.Clear();
         scoreList.Add(new Score("DATABASE TEMPORARILY UNAVAILABLE", 999999));
-
         yield return new WaitForSeconds(0f);
     }
 
@@ -149,3 +149,4 @@ public class ScoreManager : MonoBehaviour {
         return _lowestHigh;
     }
 }
+*/

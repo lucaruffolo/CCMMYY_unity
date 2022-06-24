@@ -11,8 +11,12 @@ using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.EmbASP.Utility {
-  class EmbASPManager {
-
+  class EmbASPManager : MonoBehaviour
+    {
+        //
+    public GameObject Players;
+            
+        //
     private static EmbASPManager instance;
     private static List<Distance>[,] distances_10;
     private static List<Distance>[,] distances_5;
@@ -77,8 +81,10 @@ namespace Assets.Scripts.EmbASP.Utility {
 
     #region Singleton Instance
     internal static EmbASPManager Instance {
+           
       get {
-        if (instance == null)
+                if (instance == null)
+                    Players = GetComponent<SwitchPlayer>().CurrentPlayer;
           instance = new EmbASPManager();
         return instance;
       }
@@ -87,15 +93,18 @@ namespace Assets.Scripts.EmbASP.Utility {
 
     public void GenerateCharacters() {
       Tiles = new List<TileManager.Tile>();
-      manager = GameObject.Find("Game Manager").GetComponent<TileManager>();
-      Tiles = manager.tiles;
+     // manager = GameObject.Find("Game Manager").GetComponent<TileManager>();
+     // Tiles = manager.tiles;
 
-      Pacman = GameObject.Find("pacman");
-      clyde = GameObject.Find("clyde");
-      pinky = GameObject.Find("pinky");
-      inky = GameObject.Find("inky");
-      blinky = GameObject.Find("blinky");
-      PreviousPos = new Vector3(0, 0);
+         
+      //Pacman = GameObject.Find("pacman");
+            /*
+   clyde = GameObject.Find("clyde");
+   pinky = GameObject.Find("pinky");
+   inky = GameObject.Find("inky");
+   blinky = GameObject.Find("blinky");
+         */
+            PreviousPos = new Vector3(0, 0);
 
     }
 
@@ -266,6 +275,7 @@ namespace Assets.Scripts.EmbASP.Utility {
     }
 
     private void GenerateFacts(int dimension) {
+            /*
       string encodingResource = @".\encodings\min_distances_" + dimension + ".asp";
       //Debug.Log("DLV Started: " + numberOfSteps++);
       Handler handler = new DesktopHandler(new DLVDesktopService(@".\lib\dlv.exe"));
@@ -276,7 +286,7 @@ namespace Assets.Scripts.EmbASP.Utility {
       Output o = handler.StartSync();
       AnswerSets answers = (AnswerSets)o;
 
-      //Debug.Log("Answers: " + o.OutputString);
+      Debug.Log("Answers: " + o.OutputString);
       AnswerSet a = answers.Answersets[0];
 
       foreach (object obj in a.Atoms) {
@@ -292,7 +302,9 @@ namespace Assets.Scripts.EmbASP.Utility {
           //Debug.Log("Next Action: " + move);
         }
       }
-    }
+      */
 
+    }
+    
   }
 }
